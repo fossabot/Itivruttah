@@ -1,0 +1,24 @@
+{
+  "name": "itivruttah_example",
+  "version": "0.0.0",
+  "description": "An example program to test Itivruttah Logging System",
+  "main": "example.js",
+  "scripts": {
+    "start": "node example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasanthdeveloper/Itivruttah.git"
+  },
+  "keywords": [
+    "example",
+    "itivruttah",
+    "test"
+  ],
+  "author": "Vasanth Srivatsa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vasanthdeveloper/Itivruttah/issues"
+  },
+  "homepage": "https://github.com/vasanthdeveloper/Itivruttah#readme"
+}
