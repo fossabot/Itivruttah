@@ -1,0 +1,28 @@
+{
+    "name": "itivruttah",
+    "version": "0.0.0",
+    "description": "A Straightforward Logging System For NodeJS",
+    "main": "itivruttah.js",
+    "license": "MIT",
+    "homepage": "https://github.com/vasanthdeveloper/Itivruttah#readme",
+    "author": {
+        "name": "Vasanth Srivatsa",
+        "email": "vasanthdevelopers@gmail.com",
+        "url": "https://vasanthdeveloper.com"
+    },
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vasanthdeveloper/Itivruttah.git"
+    },
+    "keywords": [
+        "logger",
+        "logging system",
+        "cli",
+        "cli logger",
+        "terminal logger"
+    ],
+    "bugs": {
+        "url": "https://github.com/vasanthdeveloper/Itivruttah/issues"
+    }
+}
