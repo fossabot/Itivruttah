@@ -4,5 +4,5 @@
 
 const itivruttah = require('itivruttah');
 
-// Log an information message
-itivruttah.info("This is an informational message.");
+// Create a new instance of the Logger
+let logger = new itivruttah.createNewLogger();
