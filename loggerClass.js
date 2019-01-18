@@ -1,5 +1,8 @@
 'use strict';
 
+// Require the built-in nodeJS modules
+const path = require('path');
+
 // Require the dependency node modules
 const dateformat = require('dateformat'),
       chalk = require('chalk');
@@ -32,11 +35,20 @@ class LoggerClass {
         // Render the $TIME variable
         strThemeTemplate = strThemeTemplate.replace("$TIME", dateformat(new Date(), this.config.timeFormat.toString()));
 
-        // Render the $TYPE variable [Colored for now]
-        strThemeTemplate = strThemeTemplate.replace("$TYPE", strType);
+        // Render the $FILENAME variable
+        strThemeTemplate = strThemeTemplate.replace("$FILENAME", path.basename(__filename));
 
         // Render the $MESSAGE variable
         strThemeTemplate = strThemeTemplate.replace("$MESSAGE", strMessage);
+
+        // Render the $TYPE variable
+        strThemeTemplate = strThemeTemplate.replace("$TYPE", strType);
+
+        // Render the $NODE variable
+        strThemeTemplate = strThemeTemplate.replace("$NODE", process.argv[0].toString());
+
+        // Render the $SCRIPT_PATH variable
+        strThemeTemplate = strThemeTemplate.replace("$SCRIPT_PATH", __filename);
         
         // Return the rendered string
         return strThemeTemplate;
