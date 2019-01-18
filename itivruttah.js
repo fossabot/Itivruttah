@@ -2,16 +2,17 @@
 
 'use strict';
 
-// Require the dependency modules
-const chalk = require('chalk'),
-      dateformat = require('dateformat');
+// Require the loggerClass
+const loggerClass = require('./loggerClass');
 
-// The function that logs an info message to the console
-function logInfo(messageStr) {
-    console.log("[" + chalk.bold.blue("INFO") + " " + dateformat(new Date(), "hh:MM:ss") + "]: " + messageStr);
+// The function that prepares a logger
+function createNewLogger() {
+    // [TODO]: This function needs to be passed an object for configuration
+    // Return a new instance of loggerClass
+    return new loggerClass();
 }
 
 // Export the required modules
 module.exports = {
-    info: logInfo
+    createNewLogger: createNewLogger
 }
