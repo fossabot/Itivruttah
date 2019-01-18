@@ -1,6 +1,6 @@
 {
     "name": "itivruttah",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "A Straightforward Logging System For NodeJS",
     "main": "itivruttah.js",
     "license": "MIT",
