@@ -8,8 +8,9 @@ const dateformat = require('dateformat'),
 class LoggerClass {
 
     // The constructor
-    constructor() {
-        // [TODO]: Take the args passed and make them global
+    constructor(config) {
+        // Make the passed config object global
+        this.config = config;
 
         // The chalk styles for different log types
         this.criticalStyle = chalk.bold.redBright;
@@ -21,12 +22,15 @@ class LoggerClass {
     }
 
     // The private function that renders the theme
-    _renderTheme(strThemeTemplate, strType, strMessage) {
+    _renderTheme(strType, strMessage) {
+        // Get the theme from the config and store it in a variable
+        let strThemeTemplate = this.config.theme.toString();
+
         // Render the $DATE variable
-        strThemeTemplate = strThemeTemplate.replace("$DATE", dateformat(new Date(), "dd-mm-yyyy"));
+        strThemeTemplate = strThemeTemplate.replace("$DATE", dateformat(new Date(), this.config.dateFormat.toString()));
 
         // Render the $TIME variable
-        strThemeTemplate = strThemeTemplate.replace("$TIME", dateformat(new Date(), "hh:MM:ss"));
+        strThemeTemplate = strThemeTemplate.replace("$TIME", dateformat(new Date(), this.config.timeFormat.toString()));
 
         // Render the $TYPE variable [Colored for now]
         strThemeTemplate = strThemeTemplate.replace("$TYPE", strType);
@@ -40,32 +44,110 @@ class LoggerClass {
 
     // The function that logs a critical statement, sometimes called a fatal or error
     logCritical(strMessage) {
-        console.log(this._renderTheme("$DATE | $TIME | $TYPE | $MESSAGE", this.criticalStyle("CRIT"), strMessage));
+        // Create a variable where we will store chalk styles
+        let style = chalk;
+
+        // Check for colored and boldText in config and style chalk accordingly
+        if (this.config.colored == true) {
+            style = style.redBright;
+        }
+        if (this.config.boldText == true) {
+            style = style.bold;
+        }
+
+        // Log to the console using _renderTheme and our created style
+        console.log(this._renderTheme(style(this.config.criticalText.toString().substring(0, 4)), strMessage));
+
+        // Check if exitAfterCritical is true, if yes then exit the program
+        if (this.config.exitAfterCritical == true) {
+            // Simply, exit the entire program
+            process.exit();
+        }
     }
 
     // The function that logs a warning statement
     logWarning(strMessage) {
-        console.log(this._renderTheme("$DATE | $TIME | $TYPE | $MESSAGE", this.warningStyle("WARN"), strMessage));
+        // Create a variable where we will store chalk styles
+        let style = chalk;
+
+        // Check for colored and boldText in config and style chalk accordingly
+        if (this.config.colored == true) {
+            style = style.yellowBright;
+        }
+        if (this.config.boldText == true) {
+            style = style.bold;
+        }
+
+        // Log to the console using _renderTheme and our created style
+        console.log(this._renderTheme(style("WARN"), strMessage));
     }
 
     // The function that logs a verbose statement, which is normally hidden
     logVerbose(strMessage) {
-        console.log(this._renderTheme("$DATE | $TIME | $TYPE | $MESSAGE", this.verboseStyle("VERB"), strMessage));
+        // Create a variable where we will store chalk styles
+        let style = chalk;
+
+        // Check for colored and boldText in config and style chalk accordingly
+        if (this.config.colored == true) {
+            style = style.magentaBright;
+        }
+        if (this.config.boldText == true) {
+            style = style.bold;
+        }
+
+        // Log to the console using _renderTheme and our created style
+        console.log(this._renderTheme(style("VERB"), strMessage));
     }
 
     // The function that logs an OK message
     logOK(strMessage) {
-        console.log(this._renderTheme("$DATE | $TIME | $TYPE | $MESSAGE", this.okStyle("OKAY"), strMessage));
+        // Create a variable where we will store chalk styles
+        let style = chalk;
+
+        // Check for colored and boldText in config and style chalk accordingly
+        if (this.config.colored == true) {
+            style = style.gray;
+        }
+        if (this.config.boldText == true) {
+            style = style.bold;
+        }
+
+        // Log to the console using _renderTheme and our created style
+        console.log(this._renderTheme(style("OKAY"), strMessage));
     }
 
     // The function that logs an informational statement
     logInfo(strMessage) {
-        console.log(this._renderTheme("$DATE | $TIME | $TYPE | $MESSAGE", this.infoStyle("INFO"), strMessage));
+        // Create a variable where we will store chalk styles
+        let style = chalk;
+
+        // Check for colored and boldText in config and style chalk accordingly
+        if (this.config.colored == true) {
+            style = style.blueBright;
+        }
+        if (this.config.boldText == true) {
+            style = style.bold;
+        }
+
+        // Log to the console using _renderTheme and our created style
+        console.log(this._renderTheme(style("INFO"), strMessage));
     }
 
     // The function that logs a success message
     logSuccess(strMessage) {
-        console.log(this._renderTheme("$DATE | $TIME | $TYPE | $MESSAGE", this.successStyle("SUCC"), strMessage));
+        // Create a variable where we will store chalk styles
+        let style = chalk;
+
+        // Check for colored and boldText in config and style chalk accordingly
+        if (this.config.colored == true) {
+            style = style.greenBright;
+        }
+        if (this.config.boldText == true) {
+            style = style.bold;
+        }
+
+        // Log to the console using _renderTheme and our created style
+        console.log(this._renderTheme(style("SUCC"), strMessage));
     }
 
 }
