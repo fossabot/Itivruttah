@@ -7,13 +7,8 @@ const itivruttah = require('itivruttah');
 
 // Create a new instance of the Logger
 let logger = new itivruttah.createNewLogger({
-    colored: true,
-    boldText: true,
-    criticalText: "FATAL",
-    exitAfterCritical: false,
-    timeFormat: "hh:MM:ss",
-    dateFormat: "DD-MM-YYYY",
-    theme: "$DATE | $TIME | $TYPE | $MESSAGE"
+    boldText: false,
+    colored: true
 });
 
 // Example to log a critical message
